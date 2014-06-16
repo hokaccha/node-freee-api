@@ -1,6 +1,6 @@
 # node-freee-api-client
 
-[https://secure.freee.co.jp/developers/api/doc/v1.0.html](freee API v1.0] API Client.
+[freee API v1.0](https://secure.freee.co.jp/developers/api/doc/v1.0.html) API Client.
 
 ```javascript
 var Freee = require('freee-api-client');

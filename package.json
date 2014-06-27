@@ -4,11 +4,15 @@
   "description": "Freee API Client",
   "main": "index.js",
   "dependencies": {
-    "ejs": "~1.0.0",
     "request": "~2.36.0",
     "simple-oauth2": "~0.1.9",
     "underscore": "~1.6.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cookie-session": "~1.0.2",
+    "dotenv": "~0.3.0",
+    "errorhandler": "~1.1.1",
+    "express": "~4.4.5"
+  },
   "license": "MIT"
 }

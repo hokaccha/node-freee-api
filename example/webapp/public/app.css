@@ -1,0 +1,97 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0 auto;
+  color: #333;
+}
+
+.button-secondary {
+  background: rgb(66, 184, 221);
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+#app {
+  height: 100%;
+}
+
+.main {
+  width: 60%;
+  float: left;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.preview {
+  height: 100%;
+  overflow: scroll;
+  background-color: #EFEFEF;
+  width: 40%;
+  float: right;
+}
+
+.preview pre {
+  padding: 10px;
+  font-size: 14px;
+  font-family: Monaco;
+}
+
+.header {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.header-signin {
+  position: absolute;
+  right: 0;
+  top: 0px;
+}
+
+.header-btns {
+  position: absolute;
+  right: 0;
+  top: 0px;
+}
+
+.company {
+  margin: 20px 0;
+  padding: 20px 0;
+  border-bottom: 1px solid #999;
+}
+
+.company-name {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.company .pure-button {
+  font-size: 14px;
+}
+
+.walletable-title {
+  font-size: 18px;
+}
+
+.walletable-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.walletable-item {
+  margin: 10px 0;
+}
+
+.walletable-btn {
+  font-size: 13px;
+  padding: 5px 10px;
+}

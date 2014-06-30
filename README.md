@@ -1,9 +1,9 @@
-# node-freee-api-client
+# node-freee-api
 
 ## Install
 
 ```
-$ npm install freee-api-client
+$ npm install freee-api
 ```
 
 ## Overview
@@ -11,7 +11,7 @@ $ npm install freee-api-client
 [freee API v1.0](https://secure.freee.co.jp/developers/api/doc/v1.0.html) API Client.
 
 ```javascript
-var Freee = require('freee-api-client');
+var Freee = require('freee-api');
 var freee = new Freee({
   appId: config.appId,
   secret: config.secret,
@@ -45,8 +45,8 @@ freee.fetchToken(req.query.code, function(err, token) {
 3. Run below commands.
 
 ```
-$ git clone git@github.com:hokaccha/node-freee-api-client.git
-$ cd node-freee-api-client
+$ git clone git@github.com:hokaccha/node-freee-api.git
+$ cd node-freee-api
 $ npm install
 $ cd example/webapp
 $ echo APP_ID=your-app-id >> .env

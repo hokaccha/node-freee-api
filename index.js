@@ -1,1 +1,1 @@
-module.exports = require('./lib/freee-api-client');
+module.exports = require('./lib/freee-api');

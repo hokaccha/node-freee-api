@@ -1,18 +1,28 @@
 {
   "name": "freee-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Freee API Client",
   "main": "index.js",
   "dependencies": {
     "request": "~2.36.0",
-    "simple-oauth2": "~0.1.9",
     "underscore": "~1.6.0"
   },
   "devDependencies": {
     "cookie-session": "~1.0.2",
     "dotenv": "~0.3.0",
     "errorhandler": "~1.1.1",
-    "express": "~4.4.5"
+    "espower-loader": "~0.7.1",
+    "express": "~4.4.5",
+    "intelli-espower-loader": "~0.1.0",
+    "mocha": "~1.20.1",
+    "power-assert": "~0.7.2",
+    "sinon": "~1.10.2"
+  },
+  "directories": {
+    "test": "test/"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
   },
   "license": "MIT"
 }

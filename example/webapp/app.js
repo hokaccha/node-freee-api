@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var app = express();
 var session = require('cookie-session');
@@ -11,24 +13,26 @@ if (!process.env.APP_ID || !process.env.SECRET) {
   process.exit(1);
 }
 
+var port = process.env.PORT || 9000;
+
+Freee.configure({
+  appId: process.env.APP_ID,
+  secret: process.env.SECRET,
+  callback: 'http://localhost:' + port + '/callback'
+});
+
 app.use(express.static(__dirname + '/public'));
 app.use(session({ keys: ['key'] }));
 
-var port = process.env.PORT || 9000;
 app.use(function(req, res, next) {
-  req.freee = new Freee({
-    appId: process.env.APP_ID,
-    secret: process.env.SECRET,
-    callback: 'http://localhost:' + port + '/callback'
-  });
 
   if (!req.session.token) return next();
 
-  req.freee.setToken(req.session.token);
+  req.freee = new Freee(req.session.token);
 
-  if (!req.freee.isExpiredToken()) return next();
+  if (!req.freee.token.isExpired()) return next();
 
-  req.freee.refreshToken(function(err, token) {
+  req.freee.token.refresh(function(err, token) {
     if (err) return next(err);
 
     req.session.token = token;
@@ -37,11 +41,11 @@ app.use(function(req, res, next) {
 });
 
 app.get('/auth', function(req, res) {
-  res.redirect(req.freee.getAuthorizeURL());
+  res.redirect(Freee.getAuthorizeURL());
 });
 
 app.get('/refresh', function(req, res, next) {
-  req.freee.refreshToken(function(err, token) {
+  req.freee.token.refresh(function(err, token) {
     if (err) return next(err);
     req.session.token = token;
     res.redirect('/');
@@ -49,7 +53,7 @@ app.get('/refresh', function(req, res, next) {
 });
 
 app.get('/callback', function(req, res, next) {
-  req.freee.fetchToken(req.query.code, function(err, token) {
+  Freee.fetchToken(req.query.code, function(err, token) {
     if (err) return next(err);
     req.session.token = token;
     res.redirect('/');
@@ -62,11 +66,11 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/api/authinfo', function(req, res) {
-  res.send({ signin: req.freee.hasToken() });
+  res.send({ signin: !!req.freee });
 });
 
 app.get('/api/token', function(req, res) {
-  res.send(req.freee.getToken());
+  res.send(req.freee.token);
 });
 
 app.get('/api/me', function(req, res, next) {

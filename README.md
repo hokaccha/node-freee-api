@@ -12,29 +12,71 @@ $ npm install freee-api
 
 ```javascript
 var Freee = require('freee-api');
-var freee = new Freee({
+
+// configure
+Freee.configure({
   appId: config.appId,
   secret: config.secret,
   callback: config.callback
 });
-```
 
-```javascript
-// getAuthorizeURL
-var url = freee.getAuthorizeURL();
-```
+// get authorize URL
+var url = Freee.getAuthorizeURL();
 
-```javascript
-// getAccessToken
-freee.fetchToken(req.query.code, function(err, token) {
-  // Call API
-  freee.me(function(err, user) {
-    console.log(user.email);
+// fetch access token
+Freee.fetchToken(req.query.code, function(err, token) {
+  req.session.token = token;
+});
+
+// create client with token
+var freee = new Freee(req.session.token);
+
+// refresh token
+if (freee.token.isExpired()) {
+  freee.token.refresh(function(err, token) {
+    req.session.token = token;
   });
+}
 
-  freee.companies(function(err, companies) {
-    console.log(companies.name);
-  });
+// Call API
+freee.me(function(err, user) {
+  // ...
+});
+
+freee.companies(function(err, companies) {
+  // ...
+});
+
+freee.walletables(companyId, function(err, walletables) {
+  // ...
+});
+
+freee.walletTxns(params, function(err, walletTxns) {
+  // ...
+});
+
+freee.accountItems(companyId, function(err, accountItems) {
+  // ...
+});
+
+freee.deals(companyId, function(err, deals) {
+  // ...
+});
+
+freee.items(companyId, function(err, items) {
+  // ...
+});
+
+freee.partners(companyId, function(err, partners) {
+  // ...
+});
+
+freee.taxes(companyId, function(err, taxes) {
+  // ...
+});
+
+freee.transfers(companyId, function(err, transfers) {
+  // ...
 });
 ```
 

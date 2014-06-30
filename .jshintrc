@@ -1,0 +1,11 @@
+{
+    "globalstrict": true,
+    "strict": false,
+    "laxcomma": true,
+    "sub": true,
+    "laxbreak": true,
+    "node": true,
+    "devel": true,
+    "es5": true,
+    "multistr": true
+}

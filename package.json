@@ -1,6 +1,6 @@
 {
   "name": "freee-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Freee API Client",
   "main": "index.js",
   "dependencies": {

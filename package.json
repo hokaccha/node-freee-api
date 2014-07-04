@@ -21,6 +21,10 @@
   "directories": {
     "test": "test/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hokaccha/node-freee-api.git"
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha"
   },

@@ -61,7 +61,6 @@ $(function() {
       },
       fetchWalletables: function(company) {
         this.fetch('/api/walletables', { company_id: company.id }).done(function(result) {
-          console.log('walletables', result);
           company.walletables = result;
         });
       },
@@ -72,9 +71,7 @@ $(function() {
           walletable_id: walletable.id
         };
 
-        this.fetch('/api/wallet_txns', params, function(result) {
-          console.log(result);
-        });
+        this.fetch('/api/wallet_txns', params);
       }
     }
   });
